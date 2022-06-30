@@ -1,0 +1,2 @@
+# svg-minifier
+svg minifier
