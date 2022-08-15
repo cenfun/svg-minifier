@@ -1,5 +1,5 @@
 # SVG Minifier
-minify svg files
+> A tool to minify svg files
 
 # Install
 ```sh
@@ -13,6 +13,7 @@ const metadata = svgMinifier({
     namespace: 'my-icons',
     dirs: [path.resolve(__dirname, 'icons')],
     exclude: [],
+    excludeSubDir: false,
 
     outputDir: path.resolve(__dirname, 'dist'),
 
@@ -60,5 +61,8 @@ see [test](test/test.js)
 * [https://github.com/pieroxy/lz-string](https://github.com/pieroxy/lz-string)
 
 ## Changelog
+
+* 1.0.1
+    - added excludeSubDir option
 
 * 1.0.0

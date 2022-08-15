@@ -10,6 +10,10 @@ const svgMinifier = require('../lib');
     const metadata = svgMinifier({
         namespace: item,
         dirs: [path.resolve(__dirname, `icons/${item}`)],
+
+        //test sub dir
+        //excludeSubDir: true,
+
         outputDir: path.resolve(__dirname, 'dist'),
 
         onSVGDocument: function($svg) {
