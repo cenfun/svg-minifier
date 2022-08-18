@@ -47,6 +47,9 @@ const metadata = svgMinifier({
     dirs: dirs,
     outputDir: path.resolve(__dirname, 'dist'),
 
+    outputMetadata: false,
+    //outputRuntime: false,
+
     metadata: {
         readme: 'open source icons'
     }

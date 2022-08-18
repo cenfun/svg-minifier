@@ -1,6 +1,6 @@
 {
     "name": "svg-minifier",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "A tool to minify svg files",
     "main": "lib/index.js",
     "scripts": {
@@ -16,14 +16,14 @@
     ],
     "dependencies": {
         "cheerio": "^1.0.0-rc.10",
-        "eight-colors": "^1.0.1",
+        "eight-colors": "^1.0.2",
         "ignore": "^5.2.0",
         "lz-utils": "^1.0.5",
         "svgo": "^2.8.0"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.18.10",
-        "@tabler/icons": "^1.82.0",
+        "@tabler/icons": "^1.83.1",
         "babel-loader": "^8.2.5",
         "eslint": "^8.22.0",
         "eslint-config-plus": "^1.0.3",

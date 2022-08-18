@@ -16,6 +16,8 @@ const metadata = svgMinifier({
     excludeSubDir: false,
 
     outputDir: path.resolve(__dirname, 'dist'),
+    outputMetadata: true,
+    outputRuntime: true,
 
     onSVGName: function(name, item) {
         return this.onSVGNameDefault(name, item);
@@ -37,7 +39,7 @@ const metadata = svgMinifier({
 console.log(metadata);
 
 ```
-see [config](lib/config.js)
+see [options](lib/options.js)
 # With type for svg name
 ```js
 svgMinifier({
@@ -62,7 +64,10 @@ see [test](test/test.js)
 
 ## Changelog
 
+* 1.0.2
+    - added options: outputMetadata/outputRuntime
+
 * 1.0.1
-    - added excludeSubDir option
+    - added option: excludeSubDir 
 
 * 1.0.0
