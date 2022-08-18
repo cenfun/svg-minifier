@@ -5,10 +5,8 @@ module.exports = {
 
     target: ['web'],
 
-    entry: path.resolve(__dirname, 'lib/runtime/src/index.js'),
-
     output: {
-        path: path.resolve(__dirname, 'lib/runtime/dist'),
+        path: path.resolve(__dirname, 'lib/runtime'),
         filename: 'template.js',
         umdNamedDefine: true,
         library: '{placeholder_runtime_namespace}',

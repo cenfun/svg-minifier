@@ -4,8 +4,8 @@
     "description": "A tool to minify svg files",
     "main": "lib/index.js",
     "scripts": {
-        "test": "node ./test/test.js",
-        "build": "npx webpack"
+        "build": "npx webpack",
+        "test": "node ./test/test.js"
     },
     "repository": {
         "type": "git",
