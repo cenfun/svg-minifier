@@ -45,7 +45,7 @@ const svgMinifier = require('../lib');
         },
 
         metadata: {
-            readme: item
+            name: item
         }
     });
     const duration = Date.now() - time_start;
@@ -68,6 +68,10 @@ const time_start = Date.now();
 const metadata = svgMinifier({
     namespace: 'type-icons',
     dirs: dirs,
+
+    //test exclude, - in filename before onSVGName
+    exclude: ['*-*'],
+
     outputDir: path.resolve(__dirname, 'dist'),
 
     outputMetadata: false,
@@ -80,5 +84,6 @@ const metadata = svgMinifier({
 
 const duration = Date.now() - time_start;
 
-//2250, 4s
+//2866, 4.9s
+//703 1.5s
 console.log(metadata.icons.length, `${duration}ms`);

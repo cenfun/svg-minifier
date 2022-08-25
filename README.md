@@ -71,6 +71,7 @@ see [test](test/test.js)
 
 * 1.0.3
     - added options: onSVGError
+    - added runtime API: getSvgSymbol
     - fixed svgo xml content error with $.html('svg')
     - fixed blank svg error
 

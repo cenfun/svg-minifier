@@ -71,6 +71,10 @@
             clear: both;
         }
 
+        .icon-group-symbol {
+            border: thin solid #eee;
+        }
+
         .icon-item {
             display: block;
             margin: 5px 5px;
@@ -110,11 +114,11 @@
             size:
             <select class="icon-size">
                 <option>16px</option>
-                <option>20px</option>
+                <option>24px</option>
                 <option>32px</option>
-                <option>50px</option>
+                <option>48px</option>
                 <option selected>64px</option>
-                <option>100px</option>
+                <option>96px</option>
                 <option>128px</option>
             </select>
             color:
@@ -155,14 +159,16 @@
             const bg = document.querySelector('.icon-bg').value;
 
             list.forEach((item) => {
-                const lib = window[item];
-                console.log(lib);
+                const pkg = window[item];
+                const metadata = pkg.default;
+                console.log(metadata);
 
                 const $group = document.createElement('div');
                 $group.className = 'icon-group';
+                $group.innerHTML = `<h3>${item} (${metadata.icons.length})</h3>`;
                 $container.appendChild($group);
 
-                lib.icons.forEach(function(icon) {
+                metadata.icons.forEach(function(icon) {
                     const div = document.createElement('div');
                     div.title = icon.name;
                     div.className = 'icon-item';
@@ -175,6 +181,42 @@
                     div.innerHTML = children.join('');
                     $group.appendChild(div);
                 });
+
+                //symbol
+                if (item === 'type-icons') {
+                    return;
+                }
+                const symbol = pkg.getSvgSymbol();
+                const $symbol = document.createElement('div');
+                $symbol.style.display = 'none';
+                $symbol.innerHTML = symbol;
+                $container.appendChild($symbol);
+
+                const $groupSymbol = document.createElement('div');
+                $groupSymbol.className = 'icon-group icon-group-symbol';
+                $groupSymbol.innerHTML = `<h3>${item} (symbol)</h3>`;
+                $container.appendChild($groupSymbol);
+
+                metadata.icons.forEach(function(icon) {
+                    const div = document.createElement('div');
+                    div.title = icon.name;
+                    div.className = 'icon-item';
+                    div.style.cssText = `width:${size};`;
+
+                    const children = [
+                        `<div class="icon-item-svg" style="height:${size};color:${color};background:${bg};">
+                            <svg pointer-events="none" width="100%" height="100%">
+                                <use xlink:href="#${icon.namespace}" />
+                            </svg>
+                        </div>`
+                    ];
+                    if (parseInt(size) >= 64) {
+                        children.push(`<div class="icon-item-name">${icon.name}</div>`);
+                    }
+                    div.innerHTML = children.join('');
+                    $groupSymbol.appendChild(div);
+                });
+
 
             });
 
