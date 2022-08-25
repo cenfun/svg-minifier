@@ -22,9 +22,14 @@ const metadata = svgMinifier({
     onSVGName: function(name, item) {
         return this.onSVGNameDefault(name, item);
     },
+    
 
-    onSVGDocument: function($svg, item) {
+    onSVGDocument: function($svg, item, $) {
 
+    },
+
+    onSVGError: function(result, item, $) {
+        return this.onSVGErrorDefault(result, item, $);
     },
 
     //additional metadata
@@ -64,10 +69,15 @@ see [test](test/test.js)
 
 ## Changelog
 
+* 1.0.3
+    - added options: onSVGError
+    - fixed svgo xml content error with $.html('svg')
+    - fixed blank svg error
+
 * 1.0.2
     - added options: outputMetadata/outputRuntime
 
 * 1.0.1
-    - added option: excludeSubDir 
+    - added options: excludeSubDir 
 
 * 1.0.0

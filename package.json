@@ -23,12 +23,12 @@
     },
     "devDependencies": {
         "@babel/preset-env": "^7.18.10",
-        "@tabler/icons": "^1.83.1",
+        "@tabler/icons": "^1.87.0",
         "babel-loader": "^8.2.5",
         "eslint": "^8.22.0",
         "eslint-config-plus": "^1.0.3",
         "eslint-plugin-html": "^7.1.0",
-        "heroicons": "^1.0.6",
+        "heroicons": "^2.0.4",
         "webpack": "^5.74.0",
         "webpack-cli": "^4.10.0"
     }
