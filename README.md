@@ -69,6 +69,10 @@ see [test](test/test.js)
 
 ## Changelog
 
+* 1.0.4
+    - fixed svg id prefix issue, and removed style/script
+    - removed svg symbol (no long supported) [test/symbol.html](test/symbol.html)
+
 * 1.0.3
     - added options: onSVGError
     - added runtime API: getSvgSymbol

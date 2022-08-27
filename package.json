@@ -1,6 +1,6 @@
 {
     "name": "svg-minifier",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "A tool to minify svg files",
     "main": "lib/index.js",
     "scripts": {
@@ -23,14 +23,15 @@
     },
     "devDependencies": {
         "@babel/preset-env": "^7.18.10",
-        "@tabler/icons": "^1.87.0",
+        "@tabler/icons": "^1.88.0",
         "babel-loader": "^8.2.5",
-        "eslint": "^8.22.0",
+        "eslint": "^8.23.0",
         "eslint-config-plus": "^1.0.3",
         "eslint-plugin-html": "^7.1.0",
-        "heroicons": "^2.0.4",
+        "heroicons": "^2.0.8",
         "super-tiny-icons": "^0.4.0",
         "webpack": "^5.74.0",
-        "webpack-cli": "^4.10.0"
+        "webpack-cli": "^4.10.0",
+        "webpack-stats-report": "^2.0.2"
     }
 }

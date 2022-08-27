@@ -1,4 +1,5 @@
 const path = require('path');
+const StatsReportPlugin = require('webpack-stats-report').StatsReportPlugin;
 module.exports = {
     mode: 'production',
     //mode: "development",
@@ -31,5 +32,11 @@ module.exports = {
                 }
             }
         }]
-    }
+    },
+
+    plugins: [new StatsReportPlugin({
+        //options
+        title: 'Stats Report - svg-minifier runtime',
+        output: '.temp/stats-report.html'
+    })]
 };

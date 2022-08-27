@@ -49,6 +49,7 @@ metadata.icons.forEach(function(icon) {
 
 export {
     metadata,
+    decompress,
     getSvg
 };
 

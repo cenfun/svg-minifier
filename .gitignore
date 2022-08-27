@@ -3,3 +3,4 @@
 /test/dist
 /package-lock.json
 /lib/runtime
+/.temp
