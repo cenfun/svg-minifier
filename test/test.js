@@ -2,88 +2,98 @@ const path = require('path');
 const EC = require('eight-colors');
 const svgMinifier = require('../lib');
 
-['my-icons', 'digital-numbers'].forEach((item) => {
+const tiktokHandler = ($svg, it, $) => {
+    //only for tiktok
+    if (it.name === 'tiktok') {
 
-    console.log('====================================================');
-    console.log(`generating ${item} ...`);
+        //console.log($.html());
 
-    const time_start = Date.now();
-    const metadata = svgMinifier({
-        namespace: item,
-        dirs: [path.resolve(__dirname, `icons/${item}`)],
+        //console.log('DTD==============================');
+        //directive
 
-        //test sub dir
-        //excludeSubDir: true,
+        const directive = $.root()[0].children.find((c) => c.type === 'directive');
+        const d = directive.data.split('"')[1];
+        EC.logYellow(`tiktok replacement: ${d}`);
+        $.root().find('[d="&z;"]').attr('d', d);
 
-        outputDir: path.resolve(__dirname, 'dist'),
+        //console.log('==================================');
 
+        //console.log($.html());
+
+    }
+};
+
+const tests = {
+    'my-icons': {
+        dirs: [path.resolve(__dirname, 'icons/my-icons')],
         onSVGDocument: function($svg, it, $) {
             //const fill = $svg.attr('fill');
             //if (!fill) {
             //$svg.attr('fill', 'currentColor');
             //}
 
-            //only for tiktok
-            if (it.name === 'tiktok') {
-
-                //console.log($.html());
-
-                //console.log('DTD==============================');
-                //directive
-
-                const directive = $.root()[0].children.find((c) => c.type === 'directive');
-                const d = directive.data.split('"')[1];
-                EC.logYellow(`tiktok replacement: ${d}`);
-                $.root().find('[d="&z;"]').attr('d', d);
-
-                //console.log('==================================');
-
-                //console.log($.html());
-
-            }
+            tiktokHandler($svg, it, $);
 
         },
 
         metadata: {
-            name: item
+            name: 'my-icons'
         }
-    });
-    const duration = Date.now() - time_start;
+    },
+    'digital-numbers': {
+        dirs: [path.resolve(__dirname, 'icons/digital-numbers')],
+        metadata: {
+            name: 'digital-numbers'
+        }
+    },
+    'type-icons': {
+        dirs: {
+            outline: path.resolve(__dirname, '../node_modules/heroicons/24/outline'),
+            solid: path.resolve(__dirname, '../node_modules/heroicons/24/solid'),
+            t: path.resolve(__dirname, '../node_modules/@tabler/icons/icons')
+        },
 
-    console.log(metadata.icons.length, `${duration}ms`);
+        //test exclude, - in filename before onSVGName
+        exclude: ['*-*'],
 
-});
+        outputMetadata: false,
+        //outputRuntime: false,
 
-
-console.log('====================================================');
-console.log('generating type icons ...');
-
-const dirs = {
-    outline: path.resolve(__dirname, '../node_modules/heroicons/24/outline'),
-    solid: path.resolve(__dirname, '../node_modules/heroicons/24/solid'),
-    t: path.resolve(__dirname, '../node_modules/@tabler/icons/icons')
+        metadata: {
+            readme: 'open source icons'
+        }
+    },
+    'tiny-icons': {
+        dirs: path.resolve(__dirname, '../node_modules/super-tiny-icons/images/svg'),
+        onSVGName: function(name, item) {
+            name = name.toLowerCase();
+            name = name.split('_').join('-');
+            return this.onSVGNameDefault(name, item);
+        },
+        onSVGDocument: function($svg, it, $) {
+            tiktokHandler($svg, it, $);
+        },
+        metadata: {
+            readme: 'super-tiny-icons/images/svg'
+        }
+    }
 };
 
-const time_start = Date.now();
-const metadata = svgMinifier({
-    namespace: 'type-icons',
-    dirs: dirs,
+Object.keys(tests).forEach((namespace) => {
 
-    //test exclude, - in filename before onSVGName
-    exclude: ['*-*'],
+    console.log('====================================================');
+    console.log(`generating ${EC.cyan(namespace)} ...`);
 
-    outputDir: path.resolve(__dirname, 'dist'),
+    const options = tests[namespace];
 
-    outputMetadata: false,
-    //outputRuntime: false,
+    options.namespace = namespace;
+    options.outputDir = path.resolve(__dirname, 'dist');
 
-    metadata: {
-        readme: 'open source icons'
-    }
+    const time_start = Date.now();
+    const metadata = svgMinifier(options);
+    const duration = Date.now() - time_start;
+
+    console.log(`generated ${EC.cyan(namespace)}: ${EC.green(metadata.icons.length)}  (${duration}ms)`);
+
 });
 
-const duration = Date.now() - time_start;
-
-//2866, 4.9s
-//703 1.5s
-console.log(metadata.icons.length, `${duration}ms`);

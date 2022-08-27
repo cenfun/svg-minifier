@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <link rel="icon" href="data:,">
+    <title>Symbol test</title>
+</head>
+
+<body>
+    <style>
+        .symbol-container {
+            background-color: #eee;
+        }
+
+        .symbol-container svg {
+            display: block;
+            width: 100px;
+            height: 100px;
+        }
+        .svg-container {
+            background-color: #eee;
+        }
+
+        .svg-container svg {
+            display: block;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+
+    <div class="symbol-container">
+
+        <svg pointer-events="none" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="#tiny-icons-apple-music"></use>
+        </svg>
+
+        <svg pointer-events="none" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <use xlink:href="#tiny-icons-google-play"></use>
+        </svg>
+
+        <div>clipPath not working</div>
+        <svg pointer-events="none" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <use xlink:href="#tiny-icons-delicious"></use>
+        </svg>
+
+    </div>
+    
+
+    <svg style="position: absolute;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+        <symbol id="tiny-icons-apple-music" viewBox="0 0 512 512">
+            <rect width="512" height="512" rx="15%" fill="url(#tiny-icons-apple-music-a)"></rect>
+            <linearGradient id="tiny-icons-apple-music-a" x1=".5" y1=".99" x2=".5" y2=".02">
+                <stop offset="0" stop-color="#FA233B"></stop>
+                <stop offset="1" stop-color="#FB5C74"></stop>
+            </linearGradient>
+            <path fill="#fff" d="M199 359V199q0-9 10-11l138-28q11-2 12 10v122q0 15-45 20c-57 9-48 105 30 79 30-11 35-40 35-69V88s0-20-17-15l-170 35s-13 2-13 18v203q0 15-45 20c-57 9-48 105 30 79 30-11 35-40 35-69"></path>
+        </symbol>
+
+        <symbol id="tiny-icons-google-play" viewBox="0 0 512 512">
+            <rect width="512" height="512" rx="15%" fill="#fff"></rect>
+            <clipPath id="tiny-icons-google-play-a">
+                <path d="M465 239L169 69c-15-9-35 2-35 20v334c0 18 20 29 35 20l296-171c13-7 13-25 0-33z"></path>
+            </clipPath>
+                <g clip-path="url(#tiny-icons-google-play-a)" transform="translate(-10 17) scale(.93324)">
+                    <path fill="#0e7" d="M20 53h400v355"></path><path fill="#0df" d="M512 444H98V30"></path>
+                    <path fill="#f34" d="M399 181v322H76"></path><path fill="#fd0" d="M324 256l180 180V76"></path>
+                </g>
+        </symbol>
+
+        <symbol id="tiny-icons-delicious" viewBox="0 0 512 512" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <clipPath id="tiny-icons-delicious-a2">
+                <rect width="512" height="512" rx="15%"></rect>
+            </clipPath>
+            <g clip-path="url(#tiny-icons-delicious-a2)">
+                <path fill="#333" d="M512 512H0V0"></path>
+                <path fill="#39F" d="M512 512V0H0"></path>
+                <path fill="#fff" d="M0 0h256v256H0"></path>
+                <path fill="#eee" d="M256 256h256v256H256z"></path>
+            </g>
+        </symbol>
+    </svg>
+
+    <div style="background-color: #ccc;">svg</div>
+
+    <div class="svg-container">
+        <svg viewBox="0 0 512 512" width="100%" height="100%" pointer-events="none" xmlns="http://www.w3.org/2000/svg">
+            <clipPath id="tiny-icons-delicious-a">
+                <rect width="512" height="512" rx="15%"></rect>
+            </clipPath>
+            <g clip-path="url(#tiny-icons-delicious-a)">
+                <path fill="#333" d="M512 512H0V0"></path>
+                <path fill="#39F" d="M512 512V0H0"></path>
+                <path fill="#fff" d="M0 0h256v256H0"></path>
+                <path fill="#eee" d="M256 256h256v256H256z"></path>
+            </g>
+        </svg>
+    </div>
+
+</body>
+
+</html>
