@@ -56,7 +56,7 @@ const tests = {
         //test exclude, - in filename before onSVGName
         exclude: ['*-*'],
 
-        outputMetadata: false,
+        //outputMetadata: false,
         //outputRuntime: false,
 
         metadata: {

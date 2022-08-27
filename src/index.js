@@ -16,14 +16,17 @@ const getSvg = function(icon, size = '100%') {
     const list = ['<svg'];
     if (icon.viewBox) {
         list.push(` viewBox="${icon.viewBox}"`);
+        delete icon.viewBox;
     }
     list.push(` width="${size}" height="${size}"`);
     if (icon.preserveAspectRatio) {
         list.push(` preserveAspectRatio="${icon.preserveAspectRatio}"`);
+        delete icon.preserveAspectRatio;
     }
     list.push(' pointer-events="none" xmlns="http://www.w3.org/2000/svg">');
 
     list.push(icon.content);
+    delete icon.content;
 
     list.push('</svg>');
     return list.join('');
@@ -32,19 +35,23 @@ const getSvg = function(icon, size = '100%') {
 const metadataStr = decompress('{placeholder_compressed_metadata}');
 const metadata = JSON.parse(metadataStr);
 
-const contents = metadata.contents;
-delete metadata.contents;
+const icons = metadata.icons;
 
-metadata.icons.forEach(function(icon) {
+//repeated content handler
+icons.forEach((icon) => {
     const namespace = `${metadata.namespace}-${icon.name}`;
-    //prefix handler
-    const content = contents[icon.content].split('{prefix}').join(namespace);
-
     icon.namespace = namespace;
-    icon.content = content;
+    //content and prefix handler
+    let content = icon.content;
+    if (typeof content === 'number') {
+        content = metadata.icons[content].content;
+    }
+    icon.content = content.split('{prefix}').join(namespace);
+});
+
+//generating svg
+icons.forEach(function(icon) {
     icon.svg = getSvg(icon);
-    //symbol no long supported
-    delete icon.content;
 });
 
 export {
