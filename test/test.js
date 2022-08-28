@@ -86,6 +86,9 @@ Object.keys(tests).forEach((namespace) => {
 
     const options = tests[namespace];
 
+    //silent test
+    //options.silent = true;
+
     options.namespace = namespace;
     options.outputDir = path.resolve(__dirname, 'dist');
 

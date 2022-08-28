@@ -44,7 +44,7 @@ icons.forEach((icon) => {
     //content and prefix handler
     let content = icon.content;
     if (typeof content === 'number') {
-        content = metadata.icons[content].content;
+        content = icons[content].content;
     }
     icon.content = content.split('{prefix}').join(namespace);
 });
