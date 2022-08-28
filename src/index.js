@@ -55,10 +55,6 @@ icons.forEach((icon) => {
     }
 });
 
-icons.forEach((icon) => {
-    initSvg(icon);
-});
-
 export {
     metadata,
     decompress,

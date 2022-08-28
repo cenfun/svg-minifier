@@ -167,6 +167,8 @@
                 $container.appendChild($group);
 
                 icons.forEach(function(icon) {
+                    pkg.initSvg(icon);
+        
                     const div = document.createElement('div');
                     div.title = icon.name;
                     div.className = 'icon-item';
