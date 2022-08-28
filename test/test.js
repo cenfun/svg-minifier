@@ -1,5 +1,6 @@
 const path = require('path');
 const EC = require('eight-colors');
+const CG = require('console-grid');
 const svgMinifier = require('../lib');
 
 const tiktokHandler = ($svg, it, $) => {
@@ -79,6 +80,8 @@ const tests = {
     }
 };
 
+const rows = [];
+
 Object.keys(tests).forEach((namespace) => {
 
     console.log('====================================================');
@@ -94,9 +97,31 @@ Object.keys(tests).forEach((namespace) => {
 
     const time_start = Date.now();
     const metadata = svgMinifier(options);
-    const duration = Date.now() - time_start;
 
-    console.log(`generated ${EC.cyan(namespace)}: ${EC.green(metadata.icons.length)}  (${duration}ms)`);
+    const duration = `${Date.now() - time_start} ms`;
+    rows.push([namespace, duration]);
+
+    console.log(`generated ${EC.cyan(namespace)}: ${EC.green(metadata.icons.length)}  (${EC.magenta(duration)})`);
 
 });
 
+CG({
+    columns: ['Name', {
+        name: 'Duration',
+        align: 'right'
+    }],
+    rows
+});
+
+/*
+
+┌─────────────────┬──────────┐
+│ Name            │ Duration │
+├─────────────────┼──────────┤
+│ my-icons        │   187 ms │
+│ digital-numbers │    58 ms │
+│ type-icons      │  1450 ms │
+│ tiny-icons      │   494 ms │
+└─────────────────┴──────────┘
+
+*/
