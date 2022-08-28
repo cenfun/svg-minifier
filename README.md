@@ -69,24 +69,5 @@ see [test](test/test.js)
 
 ## Changelog
 
-* 1.0.5
-    - fixed svgo plugins
-    - removed metadata contents
-
-* 1.0.4
-    - fixed svg id prefix issue, and removed style/script
-    - removed svg symbol (no long supported) [test/symbol.html](test/symbol.html)
-
-* 1.0.3
-    - added options: onSVGError
-    - added runtime API: getSvgSymbol
-    - fixed svgo xml content error with $.html('svg')
-    - fixed blank svg error
-
-* 1.0.2
-    - added options: outputMetadata/outputRuntime
-
-* 1.0.1
-    - added options: excludeSubDir 
-
-* 1.0.0
+* 1.0.6
+    - changed namespace to id
