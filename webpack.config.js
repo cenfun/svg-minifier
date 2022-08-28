@@ -10,7 +10,7 @@ module.exports = {
         path: path.resolve(__dirname, 'lib/runtime'),
         filename: 'template.js',
         umdNamedDefine: true,
-        library: '{placeholder_runtime_namespace}',
+        library: '{placeholder_runtime_id}',
         libraryTarget: 'umd'
     },
 

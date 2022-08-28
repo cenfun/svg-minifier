@@ -10,7 +10,7 @@ npm i svg-minifier
 ```js
 const svgMinifier = require('svg-minifier');
 const metadata = svgMinifier({
-    namespace: 'my-icons',
+    id: 'my-icons',
     dirs: [path.resolve(__dirname, 'icons')],
     exclude: [],
     excludeSubDir: false,
@@ -48,7 +48,7 @@ see [options](lib/options.js)
 # With type for svg name
 ```js
 svgMinifier({
-    namespace: 'my-icons',
+    id: 'my-icons',
     dirs: [{
         //name = [svg-name]-[type-name]
         outline: path.resolve(__dirname, 'icons/outline'),

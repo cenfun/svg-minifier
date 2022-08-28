@@ -82,26 +82,26 @@ const tests = {
 
 const rows = [];
 
-Object.keys(tests).forEach((namespace) => {
+Object.keys(tests).forEach((id) => {
 
     console.log('====================================================');
-    console.log(`generating ${EC.cyan(namespace)} ...`);
+    console.log(`generating ${EC.cyan(id)} ...`);
 
-    const options = tests[namespace];
+    const options = tests[id];
 
     //silent test
     //options.silent = true;
 
-    options.namespace = namespace;
+    options.id = id;
     options.outputDir = path.resolve(__dirname, 'dist');
 
     const time_start = Date.now();
     const metadata = svgMinifier(options);
 
     const duration = `${Date.now() - time_start} ms`;
-    rows.push([namespace, duration]);
+    rows.push([id, duration]);
 
-    console.log(`generated ${EC.cyan(namespace)}: ${EC.green(metadata.icons.length)}  (${EC.magenta(duration)})`);
+    console.log(`generated ${EC.cyan(id)}: ${EC.green(metadata.icons.length)}  (${EC.magenta(duration)})`);
 
 });
 

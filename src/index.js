@@ -39,14 +39,14 @@ const icons = metadata.icons;
 
 //repeated content handler
 icons.forEach((icon) => {
-    const namespace = `${metadata.namespace}-${icon.name}`;
-    icon.namespace = namespace;
+    const id = `${metadata.id}-${icon.name}`;
+    icon.id = id;
     //content and prefix handler
     let content = icon.content;
     if (typeof content === 'number') {
         content = icons[content].content;
     }
-    icon.content = content.split('{prefix}').join(namespace);
+    icon.content = content.split('{prefix}').join(id);
 });
 
 //generating svg
