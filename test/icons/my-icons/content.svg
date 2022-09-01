@@ -1,0 +1,5 @@
+<svg viewBox="0 0 96 96"
+    xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+    <text x="5" y="35">placeholder:</text>
+    <text x="5" y="50">{placeholder}</text>
+</svg>

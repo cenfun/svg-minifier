@@ -23,9 +23,12 @@ const metadata = svgMinifier({
         return this.onSVGNameDefault(name, item);
     },
     
+    onSVGContent: function(content, item) {
+        //svg content handler
+    },
 
     onSVGDocument: function($svg, item, $) {
-
+        //svg DOM handler
     },
 
     onSVGError: function(result, item, $) {
@@ -69,5 +72,5 @@ see [test](test/test.js)
 
 ## Changelog
 
-* 1.0.6
-    - changed namespace to id
+* 1.0.7
+    - added onSVGContent option

@@ -3,9 +3,9 @@ const EC = require('eight-colors');
 const CG = require('console-grid');
 const svgMinifier = require('../lib');
 
-const tiktokHandler = ($svg, it, $) => {
+const tiktokHandler = ($svg, item, $) => {
     //only for tiktok
-    if (it.name === 'tiktok') {
+    if (item.name === 'tiktok') {
 
         //console.log($.html());
 
@@ -27,13 +27,33 @@ const tiktokHandler = ($svg, it, $) => {
 const tests = {
     'my-icons': {
         dirs: [path.resolve(__dirname, 'icons/my-icons')],
-        onSVGDocument: function($svg, it, $) {
+
+        onSVGContent: function(content, item) {
+            if (item.name === 'content') {
+                //console.log(item);
+                return content.split('{placeholder}').join('content');
+            }
+
+            if (['ada', 'augeas'].includes(item.name)) {
+                //console.log(item);
+                content = content.split('#181816').join('currentColor');
+                return content.split('#000000').join('currentColor');
+            }
+        },
+
+        onSVGDocument: function($svg, item, $) {
             //const fill = $svg.attr('fill');
             //if (!fill) {
             //$svg.attr('fill', 'currentColor');
             //}
 
-            tiktokHandler($svg, it, $);
+            if (['ada', 'augeas'].includes(item.name)) {
+                $svg.attr('viewBox', '0 0 512 512');
+                $svg.attr('fill', 'currentColor');
+                return;
+            }
+
+            tiktokHandler($svg, item, $);
 
         },
 
@@ -71,8 +91,8 @@ const tests = {
             name = name.split('_').join('-');
             return this.onSVGNameDefault(name, item);
         },
-        onSVGDocument: function($svg, it, $) {
-            tiktokHandler($svg, it, $);
+        onSVGDocument: function($svg, item, $) {
+            tiktokHandler($svg, item, $);
         },
         metadata: {
             readme: 'super-tiny-icons/images/svg'

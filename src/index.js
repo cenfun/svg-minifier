@@ -2,6 +2,10 @@ import decompress from 'lz-utils/lib/decompress.js';
 
 const initSvg = function(icon, size = '100%') {
 
+    if (icon.svg) {
+        return;
+    }
+
     const list = ['<svg'];
     if (icon.viewBox) {
         list.push(` viewBox="${icon.viewBox}"`);
