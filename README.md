@@ -72,5 +72,5 @@ see [test](test/test.js)
 
 ## Changelog
 
-* 1.0.7
-    - added onSVGContent option
+* 1.0.8
+    - fixed inlineStyles

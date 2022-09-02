@@ -13,6 +13,9 @@ const tiktokHandler = ($svg, item, $) => {
         //directive
 
         const directive = $.root()[0].children.find((c) => c.type === 'directive');
+
+        console.log(directive.data);
+
         const d = directive.data.split('"')[1];
         EC.logYellow(`tiktok replacement: ${d}`);
         $.root().find('[d="&z;"]').attr('d', d);
