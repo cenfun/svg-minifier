@@ -36,12 +36,6 @@ const tests = {
                 //console.log(item);
                 return content.split('{placeholder}').join('content');
             }
-
-            if (['ada', 'augeas'].includes(item.name)) {
-                //console.log(item);
-                content = content.split('#181816').join('currentColor');
-                return content.split('#000000').join('currentColor');
-            }
         },
 
         onSVGDocument: function($svg, item, $) {
@@ -60,6 +54,24 @@ const tests = {
 
         },
 
+        onSVGOptimized: function($svg, item, $) {
+            if (['ada', 'augeas'].includes(item.name)) {
+                ['g', 'path'].forEach((tag) => {
+                    $svg.find(tag).each((i, it) => {
+                        const $elem = $(it);
+                        const fill = $elem.attr('fill');
+                        if (fill && fill !== 'none') {
+                            $elem.attr('fill', 'currentColor');
+                        }
+                        const stroke = $elem.attr('stroke');
+                        if (stroke && stroke !== 'none') {
+                            $elem.attr('stroke', 'currentColor');
+                        }
+                    });
+                });
+            }
+        },
+
         metadata: {
             name: 'my-icons'
         }
@@ -72,9 +84,8 @@ const tests = {
     },
     'type-icons': {
         dirs: {
-            outline: path.resolve(__dirname, '../node_modules/heroicons/24/outline'),
-            solid: path.resolve(__dirname, '../node_modules/heroicons/24/solid'),
-            t: path.resolve(__dirname, '../node_modules/@tabler/icons/icons')
+            hero: path.resolve(__dirname, '../node_modules/heroicons/24/solid'),
+            tabler: path.resolve(__dirname, '../node_modules/@tabler/icons/icons')
         },
 
         //test exclude, - in filename before onSVGName
