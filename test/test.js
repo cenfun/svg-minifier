@@ -36,6 +36,11 @@ const tests = {
                 //console.log(item);
                 return content.split('{placeholder}').join('content');
             }
+
+            content = content.split('fill:#000000').join('fill:currentColor');
+            content = content.split('fill="#000"').join('fill="currentColor"');
+
+            return content;
         },
 
         onSVGDocument: function($svg, item, $) {

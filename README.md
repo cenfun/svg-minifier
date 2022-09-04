@@ -87,7 +87,5 @@ see [test](test/test.js)
 
 ## Changelog
 
-* 1.0.9
-    - used runtime template
-    - added logDuplicates option
-    - added onFinish option
+* 1.0.10
+    - fixed viewBox with width/height

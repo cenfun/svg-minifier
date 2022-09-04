@@ -1,6 +1,6 @@
 {
     "name": "svg-minifier",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "A tool to minify svg files",
     "main": "lib/index.js",
     "scripts": {
