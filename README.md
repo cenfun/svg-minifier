@@ -19,20 +19,35 @@ const metadata = svgMinifier({
     outputMetadata: true,
     outputRuntime: true,
 
+    silent: false,
+    logDuplicates: true,
+
     onSVGName: function(name, item) {
         return this.onSVGNameDefault(name, item);
     },
     
+    //original svg file content
     onSVGContent: function(content, item) {
         //svg content handler
     },
 
+    //cheerio DOM (jQuery API)
     onSVGDocument: function($svg, item, $) {
         //svg DOM handler
     },
 
+    //cheerio DOM after optimized
+    onSVGOptimized: function($svg, item, $) {
+        //svg DOM handler
+    },
+
+    //optimize failed
     onSVGError: function(result, item, $) {
         return this.onSVGErrorDefault(result, item, $);
+    },
+
+    onFinish: function(options, metadata) {
+
     },
 
     //additional metadata
@@ -40,6 +55,7 @@ const metadata = svgMinifier({
         key: 'value'
     },
 
+    //svgo config (SVG Optimizer)
     svgo: {}
 
 });
@@ -52,11 +68,24 @@ see [options](lib/options.js)
 ```js
 svgMinifier({
     id: 'my-icons',
-    dirs: [{
+    dirs: ['icons/solid', {
         //name = [svg-name]-[type-name]
-        outline: path.resolve(__dirname, 'icons/outline'),
-        solid: path.resolve(__dirname, 'icons/solid')
+        outline: 'icons/outline'
     }]
+});
+```
+
+# With custom handler
+```js
+svgMinifier({
+    id: 'my-icons',
+    dirs: function(Util) {
+        const dir = "svg";
+
+        //do something or generate icons to svg dir
+
+        return dir;
+    }
 });
 ```
 
@@ -72,6 +101,7 @@ see [test](test/test.js)
 
 ## Changelog
 
-* 1.0.8
-    - fixed inlineStyles
-    - added onSVGOptimized option
+* 1.0.9
+    - used runtime template
+    - added logDuplicates option
+    - added onFinish option

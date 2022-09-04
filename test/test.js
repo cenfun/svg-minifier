@@ -72,6 +72,15 @@ const tests = {
             }
         },
 
+        onFinish: function(options, metadata) {
+            console.log('====================================================');
+            console.log(`onFinish: ${metadata.id}`);
+            EC.logYellow('duplicateNames');
+            console.log(options.duplicateNames);
+            EC.logYellow('duplicateContents');
+            console.log(options.duplicateContents);
+        },
+
         metadata: {
             name: 'my-icons'
         }
