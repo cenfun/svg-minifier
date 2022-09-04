@@ -4,7 +4,6 @@
     "description": "A tool to minify svg files",
     "main": "lib/index.js",
     "scripts": {
-        "build": "npx webpack",
         "test": "node ./test/test.js"
     },
     "repository": {
@@ -20,19 +19,15 @@
         "eight-colors": "^1.0.2",
         "ignore": "^5.2.0",
         "lz-utils": "^1.0.5",
-        "svgo": "^2.8.0"
+        "svgo": "^2.8.0",
+        "umd-runtime-templates": "^1.0.1"
     },
     "devDependencies": {
-        "@babel/preset-env": "^7.18.10",
         "@tabler/icons": "^1.92.0",
-        "babel-loader": "^8.2.5",
         "eslint": "^8.23.0",
         "eslint-config-plus": "^1.0.3",
         "eslint-plugin-html": "^7.1.0",
         "heroicons": "^2.0.10",
-        "super-tiny-icons": "^0.4.0",
-        "webpack": "^5.74.0",
-        "webpack-cli": "^4.10.0",
-        "webpack-stats-report": "^2.0.2"
+        "super-tiny-icons": "^0.4.0"
     }
 }
