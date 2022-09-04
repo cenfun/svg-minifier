@@ -75,20 +75,6 @@ svgMinifier({
 });
 ```
 
-# With custom handler
-```js
-svgMinifier({
-    id: 'my-icons',
-    dirs: function(Util) {
-        const dir = "svg";
-
-        //do something or generate icons to svg dir
-
-        return dir;
-    }
-});
-```
-
 # Test
 ```
 npm run test
