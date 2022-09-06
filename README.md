@@ -23,12 +23,19 @@ const metadata = svgMinifier({
     logDuplicates: true,
 
     onSVGName: function(name, item) {
+
+        //filter
+        // if (name === 'xxx') {
+        //     return;
+        // }
+
         return this.onSVGNameDefault(name, item);
     },
     
     //original svg file content
     onSVGContent: function(content, item) {
         //svg content handler
+        // return newContent;
     },
 
     //cheerio DOM (jQuery API)
@@ -39,6 +46,11 @@ const metadata = svgMinifier({
     //cheerio DOM after optimized
     onSVGOptimized: function($svg, item, $) {
         //svg DOM handler
+
+        //filter
+        // if (item.name === 'xxx') {
+        //     return false;
+        // }
     },
 
     //optimize failed
@@ -87,5 +99,5 @@ see [test](test/test.js)
 
 ## Changelog
 
-* 1.0.10
-    - fixed viewBox with width/height
+* 1.0.11
+    - added filter for onSVGOptimized

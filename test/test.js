@@ -31,6 +31,16 @@ const tests = {
     'my-icons': {
         dirs: [path.resolve(__dirname, 'icons/my-icons')],
 
+        onSVGName: function(name, item) {
+
+            //filter
+            // if (name === 'at') {
+            //     return;
+            // }
+
+            return name;
+        },
+
         onSVGContent: function(content, item) {
             if (item.name === 'content') {
                 //console.log(item);
@@ -60,6 +70,14 @@ const tests = {
         },
 
         onSVGOptimized: function($svg, item, $) {
+
+            // // filter
+            if (item.name === 'at') {
+                EC.logYellow('at.svg filtered');
+                return false;
+            }
+
+
             if (['ada', 'augeas'].includes(item.name)) {
                 ['g', 'path'].forEach((tag) => {
                     $svg.find(tag).each((i, it) => {
@@ -75,6 +93,7 @@ const tests = {
                     });
                 });
             }
+
         },
 
         onFinish: function(options, metadata) {
