@@ -95,9 +95,13 @@ see [test](test/test.js)
 
 ## Link
 * [https://github.com/svg/svgo](https://github.com/svg/svgo)
-* [https://github.com/pieroxy/lz-string](https://github.com/pieroxy/lz-string)
+* [https://github.com/cenfun/lz-utils](https://github.com/cenfun/lz-utils)
 
 ## Changelog
 
+* 2.0.0
+    - update lz-utils
+
 * 1.0.11
     - added filter for onSVGOptimized
+
