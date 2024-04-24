@@ -4,25 +4,27 @@ const CG = require('console-grid');
 const svgMinifier = require('../lib');
 
 const tiktokHandler = ($svg, item, $) => {
-    //only for tiktok
+    // only for tiktok
     if (item.name === 'tiktok') {
 
-        //console.log($.html());
+        // console.log($.html());
 
-        //console.log('DTD==============================');
-        //directive
+        // console.log('DTD==============================');
+        // directive
 
         const directive = $.root()[0].children.find((c) => c.type === 'directive');
+        if (directive) {
+            console.log(directive.data);
 
-        console.log(directive.data);
+            const d = directive.data.split('"')[1];
+            EC.logYellow(`tiktok replacement: ${d}`);
+            $.root().find('[d="&z;"]').attr('d', d);
+        }
 
-        const d = directive.data.split('"')[1];
-        EC.logYellow(`tiktok replacement: ${d}`);
-        $.root().find('[d="&z;"]').attr('d', d);
 
-        //console.log('==================================');
+        // console.log('==================================');
 
-        //console.log($.html());
+        // console.log($.html());
 
     }
 };
@@ -33,7 +35,7 @@ const tests = {
 
         onSVGName: function(name, item) {
 
-            //filter
+            // filter
             // if (name === 'at') {
             //     return;
             // }
@@ -43,7 +45,7 @@ const tests = {
 
         onSVGContent: function(content, item) {
             if (item.name === 'content') {
-                //console.log(item);
+                // console.log(item);
                 return content.split('{placeholder}').join('content');
             }
 
@@ -54,10 +56,10 @@ const tests = {
         },
 
         onSVGDocument: function($svg, item, $) {
-            //const fill = $svg.attr('fill');
-            //if (!fill) {
-            //$svg.attr('fill', 'currentColor');
-            //}
+            // const fill = $svg.attr('fill');
+            // if (!fill) {
+            // $svg.attr('fill', 'currentColor');
+            // }
 
             if (['ada', 'augeas'].includes(item.name)) {
                 $svg.attr('viewBox', '0 0 512 512');
@@ -121,11 +123,11 @@ const tests = {
             tabler: path.resolve(__dirname, '../node_modules/@tabler/icons/icons')
         },
 
-        //test exclude, - in filename before onSVGName
+        // test exclude, - in filename before onSVGName
         exclude: ['*-*'],
 
-        //outputMetadata: false,
-        //outputRuntime: false,
+        // outputMetadata: false,
+        // outputRuntime: false,
 
         metadata: {
             readme: 'open source icons'
@@ -156,8 +158,8 @@ Object.keys(tests).forEach((id) => {
 
     const options = tests[id];
 
-    //silent test
-    //options.silent = true;
+    // silent test
+    // options.silent = true;
 
     options.id = id;
     options.outputDir = path.resolve(__dirname, 'dist');
@@ -192,3 +194,6 @@ CG({
 └─────────────────┴──────────┘
 
 */
+
+console.log('================================================================');
+console.log('please open test/index.html test/symbol.html to check results');
